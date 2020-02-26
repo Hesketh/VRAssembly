@@ -1,0 +1,184 @@
+fileFormatVersion: 2
+guid: 46ac9520ca4a14e4691dcc5d3c7a3e86
+timeCreated: 1546250957
+licenseType: Store
+ModelImporter:
+  serializedVersion: 21
+  fileIDToRecycleName:
+    100000: Ceiling_Complete
+    100002: Ceiling_Corner
+    100004: Door
+    100006: Door_Large_01
+    100008: Door_Large_02
+    100010: Doorframe
+    100012: Doorframe_Large
+    100014: EdgeRim
+    100016: Floor
+    100018: //RootNode
+    100020: Plastic_003
+    100022: Plastic_01
+    100024: Plastic_02
+    100026: Roof
+    100028: Roof_Edge_Protection
+    100030: Roof_Structure
+    100032: Wallpiece_01
+    100034: Walls_Arch
+    100036: Walls_Exterior
+    100038: Walls_Interior
+    100040: Windows
+    400000: Ceiling_Complete
+    400002: Ceiling_Corner
+    400004: Door
+    400006: Door_Large_01
+    400008: Door_Large_02
+    400010: Doorframe
+    400012: Doorframe_Large
+    400014: EdgeRim
+    400016: Floor
+    400018: //RootNode
+    400020: Plastic_003
+    400022: Plastic_01
+    400024: Plastic_02
+    400026: Roof
+    400028: Roof_Edge_Protection
+    400030: Roof_Structure
+    400032: Wallpiece_01
+    400034: Walls_Arch
+    400036: Walls_Exterior
+    400038: Walls_Interior
+    400040: Windows
+    2300000: Ceiling_Complete
+    2300002: Ceiling_Corner
+    2300004: Door
+    2300006: Door_Large_01
+    2300008: Door_Large_02
+    2300010: Doorframe
+    2300012: Doorframe_Large
+    2300014: EdgeRim
+    2300016: Floor
+    2300018: Plastic_003
+    2300020: Plastic_01
+    2300022: Plastic_02
+    2300024: Roof
+    2300026: Roof_Edge_Protection
+    2300028: Roof_Structure
+    2300030: Wallpiece_01
+    2300032: Walls_Arch
+    2300034: Walls_Exterior
+    2300036: Walls_Interior
+    2300038: Windows
+    3300000: Ceiling_Complete
+    3300002: Ceiling_Corner
+    3300004: Door
+    3300006: Door_Large_01
+    3300008: Door_Large_02
+    3300010: Doorframe
+    3300012: Doorframe_Large
+    3300014: EdgeRim
+    3300016: Floor
+    3300018: Plastic_003
+    3300020: Plastic_01
+    3300022: Plastic_02
+    3300024: Roof
+    3300026: Roof_Edge_Protection
+    3300028: Roof_Structure
+    3300030: Wallpiece_01
+    3300032: Walls_Arch
+    3300034: Walls_Exterior
+    3300036: Walls_Interior
+    3300038: Windows
+    4300000: Walls_Interior
+    4300002: Roof
+    4300004: Windows
+    4300006: Walls_Exterior
+    4300008: Roof_Edge_Protection
+    4300010: EdgeRim
+    4300012: Wallpiece_01
+    4300014: Doorframe_Large
+    4300016: Door_Large_01
+    4300018: Door_Large_02
+    4300020: Roof_Structure
+    4300022: Doorframe
+    4300024: Door
+    4300026: Floor
+    4300028: Ceiling_Corner
+    4300030: Walls_Arch
+    4300032: Plastic_02
+    4300034: Plastic_01
+    4300036: Ceiling_Complete
+    4300038: Plastic_003
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    extraUserProperties: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importVisibility: 0
+    importBlendShapes: 1
+    importCameras: 0
+    importLights: 0
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+    normalCalculationMode: 4
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,146 @@
+fileFormatVersion: 2
+guid: 27aa7e7149e251b46a5eb80d3792c065
+timeCreated: 1510042104
+licenseType: Store
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: Box456
+    100004: Plane051
+    100006: Box457
+    100008: Box458
+    100010: Box459
+    100012: Box460
+    100014: Cylinder344
+    100016: Cylinder345
+    100018: Cylinder346
+    100020: Plane052
+    100022: Locker
+    100024: Locker_Door_01
+    100026: Locker_Door_02
+    400000: //RootNode
+    400002: Box456
+    400004: Plane051
+    400006: Box457
+    400008: Box458
+    400010: Box459
+    400012: Box460
+    400014: Cylinder344
+    400016: Cylinder345
+    400018: Cylinder346
+    400020: Plane052
+    400022: Locker
+    400024: Locker_Door_01
+    400026: Locker_Door_02
+    2300000: //RootNode
+    2300002: Box456
+    2300004: Plane051
+    2300006: Box457
+    2300008: Box458
+    2300010: Box459
+    2300012: Box460
+    2300014: Cylinder344
+    2300016: Cylinder345
+    2300018: Cylinder346
+    2300020: Plane052
+    2300022: Locker
+    2300024: Locker_Door_01
+    2300026: Locker_Door_02
+    3300000: //RootNode
+    3300002: Box456
+    3300004: Plane051
+    3300006: Box457
+    3300008: Box458
+    3300010: Box459
+    3300012: Box460
+    3300014: Cylinder344
+    3300016: Cylinder345
+    3300018: Cylinder346
+    3300020: Plane052
+    3300022: Locker
+    3300024: Locker_Door_01
+    3300026: Locker_Door_02
+    4300000: Box456
+    4300002: Plane051
+    4300004: Box457
+    4300006: Box458
+    4300008: Cylinder344
+    4300010: Cylinder345
+    4300012: Cylinder346
+    4300014: Box459
+    4300016: Box460
+    4300018: Plane052
+    4300020: Locker
+    4300022: Locker_Door_01
+    4300024: Locker_Door_02
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
