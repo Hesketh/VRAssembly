@@ -7,6 +7,7 @@ The project uses the Unity Steam VR Plugin to provide basic interactions and VR 
 
 ## Video Preview
 [![VR Assembly Video](Screenshot.jpg)](https://youtu.be/thDCN2UlKw8 "VR Assembly Video")
+Click to watch on Youtube
 
 ## Dependencies
   * Bakery Lightmapper
