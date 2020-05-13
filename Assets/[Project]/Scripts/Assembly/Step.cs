@@ -2,73 +2,105 @@
 using System.Collections;
 using UnityEngine;
 
-public abstract class Step : MonoBehaviour
+namespace VRAssembly
 {
-    [SerializeField] private Slot[] requirements = new Slot[0];
-    [SerializeField] private bool requireAny = false;
-
-    private bool available = false;
-    private bool complete = false;
-
-    public bool Complete
+    /// <summary>
+    /// A step towards completing a task
+    /// How the Step should be completed should be defined in a concrete version of this class
+    /// </summary>
+    public abstract class Step : MonoBehaviour
     {
-        get => complete;
+        [Tooltip("Any Steps that must be complete before this is made Active"), SerializeField] private Slot[] requirements = new Slot[0];
+        [Tooltip("Whether this is ANY or ALL requirements must be fulfilled"), SerializeField] private bool requireAny = false;
 
-        protected set
+        private bool available = false;
+        private bool complete = false;
+
+        /// <summary>
+        /// Indicates that this step is finished
+        /// Therefore any other steps using this as a requirement know that their requirement has been fulfilled
+        /// </summary>
+        public bool Complete
         {
-            complete = value;
+            get => complete;
 
-            if (Complete)
+            protected set
             {
-                OnSlotCompleted?.Invoke();
+                complete = value;
+
+                if (Complete)
+                {
+                    OnSlotCompleted?.Invoke();
+                }
             }
         }
-    }
 
-    public bool Available
-    {
-        get => available && !Complete;
-
-        protected set
+        /// <summary>
+        /// Indicates that the step is able to be completed
+        /// If the step is Complete, then you wouldn't be able to complete it again
+        /// </summary>
+        public bool Available
         {
-            available = value;
+            get => available && !Complete;
 
-            if (Available)
+            protected set
             {
-                OnSlotAvailable?.Invoke();
+                available = value;
+
+                if (Available)
+                {
+                    OnSlotAvailable?.Invoke();
+                }
             }
         }
-    }
 
-    public Action OnSlotCompleted;
-    public Action OnSlotAvailable;
+        /// <summary>
+        /// Event Invoked anytime when the step is set to complete
+        /// </summary>
+        public Action OnSlotCompleted;
 
-    protected virtual IEnumerator Start()
-    {
-        foreach (Slot requirement in requirements)
+        /// <summary>
+        /// Event invoked anytime when the step is set to available
+        /// </summary>
+        public Action OnSlotAvailable;
+
+        /// <summary>
+        /// At startup, we hook up to events in any required steps so that we can calculate whether this step is available
+        /// </summary>
+        protected virtual IEnumerator Start()
         {
-            requirement.OnSlotCompleted += OnRequirementCompleted;
+            foreach (Slot requirement in requirements)
+            {
+                requirement.OnSlotCompleted += OnRequirementCompleted;
+            }
+
+            yield return new WaitForSeconds(1.0f);
+
+            // If we don't have any requirements, we are a base Slot.
+            Available = (requirements.Length == 0);
         }
 
-        yield return new WaitForSeconds(1.0f);
-
-        // If we don't have any requirements, we are a base Slot.
-        Available = (requirements.Length == 0);
-    }
-
-    protected virtual void OnDestroy()
-    {
-        foreach (Slot requirement in requirements)
+        /// <summary>
+        /// When cleaning up this gameobject, we also want to remove our event listeners within the required steps
+        /// Ensures that we can add/remove objects at runtime if need be
+        /// </summary>
+        protected virtual void OnDestroy()
         {
-            requirement.OnSlotCompleted -= OnRequirementCompleted;
+            foreach (Slot requirement in requirements)
+            {
+                requirement.OnSlotCompleted -= OnRequirementCompleted;
+            }
         }
-    }
 
-    private void OnRequirementCompleted()
-    {
-        if (!Available && !Complete)
+        /// <summary>
+        /// Event handler for whenever any step is completed
+        /// Instead of internally tracking completion step of all requirements in here
+        /// Every time we complete any step, we evaluate all of their Completion status
+        /// To check whether all out prerequisites have been met
+        /// </summary>
+        private void OnRequirementCompleted()
         {
-            if (!requireAny)
+            if (!Available && !Complete && !requireAny)
             {
                 foreach (Slot requirement in requirements)
                 {
@@ -79,19 +111,37 @@ public abstract class Step : MonoBehaviour
                         return;
                     }
                 }
+
+                // We can mark our self as available
+                Available = true;
             }
-
-            // We can mark ourself as available
-            Available = true;
         }
-    }
 
-    [ContextMenu("Complete")]
-    private void Debug_Complete()
-    {
-        if (Available)
+#if UNITY_EDITOR
+        /// <summary>
+        /// Debug function for calling within the Unity Editor
+        /// Allows us to simulate completing the step (abiding by standard available rules)
+        /// </summary>
+        [ContextMenu("Complete")]
+        private void Debug_Complete()
         {
+            if (Available)
+            {
+                Complete = true;
+            }
+        }
+
+        /// <summary>
+        /// Debug function for calling within the Unity Editor
+        /// Allows us to simulate completing the step (ignoring availability rules)
+        /// </summary>
+        [ContextMenu("Complete (Force)")]
+        private void Debug_ForceComplete()
+        {
+            Available = true;
             Complete = true;
         }
+#endif
     }
+
 }

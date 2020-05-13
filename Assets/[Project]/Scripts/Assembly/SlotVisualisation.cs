@@ -1,56 +1,73 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-[RequireComponent(typeof(Slot), typeof(AudioSource))]
-public class SlotVisualisation : MonoBehaviour
+namespace VRAssembly
 {
-    [Header("Visual")]
-    [SerializeField] private Material unavailableMat = null;
-    [SerializeField] private Material availableMat = null;
-
-    [Header("Audio")]
-    [SerializeField] private AudioClip completeClip = null;
-
-    private Slot slot = null;
-    private Renderer[] renderers = null;
-    private AudioSource audioSource = null;
-
-    protected virtual void Awake()
+    /// <summary>
+    /// Component to provide a visual response/state to the Slot that it is attached too
+    /// </summary>
+    [RequireComponent(typeof(Slot), typeof(AudioSource))]
+    public class SlotVisualisation : MonoBehaviour
     {
-        TryGetComponent(out slot);
-        TryGetComponent(out audioSource);
+        [Header("Visual")] 
+        [SerializeField] private Material unavailableMat = null;
+        [SerializeField] private Material availableMat = null;
 
-        renderers = GetComponentsInChildren<Renderer>();
-    }
+        [Header("Audio")]
+        [SerializeField] private AudioClip completeClip = null;
 
-    protected virtual void Start()
-    {
-        slot.OnSlotAvailable += OnSlotAvailable;
-        slot.OnSlotCompleted += OnSlotCompleted;
-        
-        foreach (Renderer renderer in renderers)
+        private Slot slot = null;
+        private Renderer[] renderers = null;
+        private AudioSource audioSource = null;
+
+        /// <summary>
+        /// Obtain necessary components
+        /// </summary>
+        protected virtual void Awake()
         {
-            renderer.material = unavailableMat;
+            TryGetComponent(out slot);
+            TryGetComponent(out audioSource);
+
+            renderers = GetComponentsInChildren<Renderer>();
         }
-    }
 
-    private void OnSlotAvailable()
-    {
-        foreach (Renderer renderer in renderers)
+        /// <summary>
+        /// Registers to all events and set default state
+        /// </summary>
+        protected virtual void Start()
         {
-            renderer.material = availableMat;
+            slot.OnSlotAvailable += OnSlotAvailable;
+            slot.OnSlotCompleted += OnSlotCompleted;
+
+            foreach (Renderer renderer in renderers)
+            {
+                renderer.material = unavailableMat;
+            }
         }
-    }
 
-    private void OnSlotCompleted()
-    {
-        audioSource.PlayOneShot(completeClip);
-
-        foreach (Renderer renderer in renderers)
+        /// <summary>
+        /// Event handler for a Slot becoming available for completion
+        /// Sets the materials to the one to represent ready to complete steps
+        /// </summary>
+        private void OnSlotAvailable()
         {
-            renderer.enabled = false;
+            foreach (Renderer renderer in renderers)
+            {
+                renderer.material = availableMat;
+            }
+        }
+
+        /// <summary>
+        /// Event handler for a Slot being completed
+        /// Plays an audio cue and changes to the completed material
+        /// </summary>
+        private void OnSlotCompleted()
+        {
+            audioSource.PlayOneShot(completeClip);
+
+            foreach (Renderer renderer in renderers)
+            {
+                renderer.enabled = false;
+            }
         }
     }
 }
