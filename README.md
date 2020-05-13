@@ -9,7 +9,7 @@ The project uses the Unity Steam VR Plugin to provide basic interactions and VR 
 [![VR Assembly Video](Screenshot.jpg)](https://youtu.be/thDCN2UlKw8 "VR Assembly Video")
 Click to watch on Youtube
 
-## Requirments
+## Requirements
 This application requires a SteamVR 2.0 compatible VR Device, such as the HTC Vive, Valve Index, Occulus Rift.
 
 The only device this has been tested on for performance (achieving stable 120fps) had the following specs:
