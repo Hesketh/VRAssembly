@@ -1,27 +1,43 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody))]
-public class ResetIfLost : MonoBehaviour
+namespace VRAssembly
 {
-    private new Rigidbody rigidbody = null;
-    private Vector3 initialPosition = Vector3.zero;
-
-    protected virtual void Awake()
+    /// <summary>
+    /// Helper for rigidbodies within the scene
+    /// Cache the starting position of the attached transform and reset to it if we fall below a certain y level (off map)
+    /// </summary>
+    [RequireComponent(typeof(Rigidbody))]
+    public class ResetIfLost : MonoBehaviour
     {
-        TryGetComponent<Rigidbody>(out rigidbody);
+        private new Rigidbody rigidbody = null;
+        private Vector3 initialPosition = Vector3.zero;
 
-        initialPosition = transform.position;
-    }
+        /// <summary>
+        /// The lowest Y level that the attached transform can go to before resetting
+        /// </summary>
+        private const float MinY = -10.0f;
 
-    protected virtual void Update()
-    {
-        if (transform.position.y < -10)
+        /// <summary>
+        /// Cache the attached transforms starting position and retrieve relevant components
+        /// </summary>
+        protected virtual void Awake()
         {
-            rigidbody.velocity = Vector3.zero;
-            rigidbody.angularVelocity = Vector3.zero;
-            transform.position = initialPosition;
+            TryGetComponent<Rigidbody>(out rigidbody);
+
+            initialPosition = transform.position;
+        }
+
+        /// <summary>
+        /// Check the y position of the attached transform and if it is below a certain y level reset to the cached start position 
+        /// </summary>
+        protected virtual void Update()
+        {
+            if (transform.position.y < MinY)
+            {
+                rigidbody.velocity = Vector3.zero;
+                rigidbody.angularVelocity = Vector3.zero;
+                transform.position = initialPosition;
+            }
         }
     }
 }

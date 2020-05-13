@@ -3,51 +3,69 @@ using TMPro;
 using System.Collections;
 using System;
 
-public class Stopwatch : Step
+namespace VRAssembly
 {
-    [SerializeField] private Step[] requirementsToStop = new Step[0];
-    
-    [Header("UI")]
-    [SerializeField] private TextMeshProUGUI[] outputs = new TextMeshProUGUI[0];
-
-    private float timeElapsed = 0.0f;
-
-    protected override IEnumerator Start()
+    /// <summary>
+    /// Used to track the amount of time taken from completed the required steps the final requirements
+    /// Outputs to any number for TextMeshProUGUI text components
+    /// </summary>
+    public class Stopwatch : Step
     {
-        foreach (Step step in requirementsToStop)
+        [SerializeField] private Step[] requirementsToStop = new Step[0];
+
+        [Header("UI")]
+        [SerializeField] private TextMeshProUGUI[] outputs = new TextMeshProUGUI[0];
+
+        private float timeElapsed = 0.0f;
+
+        /// <summary>
+        /// Register event handler to all requirements to stop
+        /// </summary>
+        protected override IEnumerator Start()
         {
-            step.OnSlotCompleted += OnCompletionRequirementComplete;
+            foreach (Step step in requirementsToStop)
+            {
+                step.OnSlotCompleted += OnCompletionRequirementComplete;
+            }
+
+            yield return base.Start();
         }
 
-        yield return base.Start();
-    }
-
-    protected virtual void Update()
-    {
-        if (Available)
+        /// <summary>
+        /// Each update if available we need to increment the amount of time spent
+        /// We also update the text elements each frame too
+        /// </summary>
+        protected virtual void Update()
         {
-            timeElapsed += Time.deltaTime;
-
-            TimeSpan time = TimeSpan.FromSeconds(timeElapsed);
-            string str = time.ToString(@"hh\:mm\:ss");
-
-            foreach (TextMeshProUGUI output in outputs)
+            if (Available)
             {
-                output.text = str;
+                timeElapsed += Time.deltaTime;
+
+                TimeSpan time = TimeSpan.FromSeconds(timeElapsed);
+                string str = time.ToString(@"hh\:mm\:ss");
+
+                foreach (TextMeshProUGUI output in outputs)
+                {
+                    output.text = str;
+                }
             }
         }
-    }
 
-    private void OnCompletionRequirementComplete()
-    {
-        foreach (Step step in requirementsToStop)
+        /// <summary>
+        /// Event handler for any of the final steps being complete
+        /// We will only mark ourselves aas complete if all the steps we are listening too are done
+        /// </summary>
+        private void OnCompletionRequirementComplete()
         {
-            if (!step.Complete)
+            foreach (Step step in requirementsToStop)
             {
-                return;
+                if (!step.Complete)
+                {
+                    return;
+                }
             }
-        }
 
-        Complete = true;
+            Complete = true;
+        }
     }
 }
